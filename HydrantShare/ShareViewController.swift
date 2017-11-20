@@ -20,13 +20,33 @@ class ShareViewController: SLComposeServiceViewController {
     private func getURLAttachment(completion: @escaping (URL) -> Void) {
         let item: NSExtensionItem = extensionContext!.inputItems[0] as! NSExtensionItem
         let attachment = item.attachments![0] as! NSItemProvider
-        attachment.loadItem(forTypeIdentifier: kUTTypeURL as String) { (data, error) in
-            switch data {
-            case let url as URL:
-                // todo: figure out how to pass IUO error
-                completion(url)
-            default:
-                NSLog("no url found")
+        let urlType = kUTTypeURL as String
+        let plainTextType = kUTTypePlainText as String
+        if attachment.hasItemConformingToTypeIdentifier(urlType) {
+            attachment.loadItem(forTypeIdentifier: urlType) { (data, error) in
+                switch data {
+                case let url as URL:
+                    // todo: figure out how to pass IUO error
+                    completion(url)
+                default:
+                    // TODO: call completion to finish the share event
+                    NSLog("no url found")
+                }
+            }
+        } else if attachment.hasItemConformingToTypeIdentifier(plainTextType) {
+            attachment.loadItem(forTypeIdentifier: plainTextType) { (data, error) in
+                switch data {
+                case let urlString as String:
+                    if let url = URL(string: urlString) {
+                        completion(url)
+                    } else {
+                        // TODO: call completion to finish the share event
+                        NSLog("String was not a URL")
+                    }
+                default:
+                    // TODO: call completion to finish the share event
+                    NSLog("no url found")
+                }
             }
         }
     }
