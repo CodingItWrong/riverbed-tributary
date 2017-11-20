@@ -47,6 +47,15 @@ class ShareViewController: SLComposeServiceViewController {
         task.resume()
     }
     
+    private func alert(message: String, completionHandler: (() -> Void)?) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completionHandler?();
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
+    
     override func didSelectPost() {
         getURLAttachment() { sharedURL in
             let bodyDict = [
@@ -54,12 +63,9 @@ class ShareViewController: SLComposeServiceViewController {
                 "title": self.contentText,
                 ]
             self.postWebhook(bodyDict: bodyDict) {
-                let alert = UIAlertController(title: "Saved to Firehose.", message: nil, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.alert(message: "Saved to Firehose.") {
                     self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                 }
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
             }
         }
     }
