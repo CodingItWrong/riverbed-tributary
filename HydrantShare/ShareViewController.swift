@@ -18,6 +18,17 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+        let urlString = "http://localhost:3000/webhooks/hydrant"
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        let bodyDict = ["message": "hello, world!"]
+        let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        request.httpMethod = "POST";
+        request.httpBody = bodyData;
+
+        let task = session.dataTask(with: request)
+        task.resume()
     
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
