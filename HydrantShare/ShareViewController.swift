@@ -32,7 +32,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
-        let webhookURLString = "http://localhost:3000/webhooks/hydrant"
+        let webhookURLString = "https://links.codingitwrong.com/webhooks/hydrant"
         let webhookURL = URL(string: webhookURLString)!
         let session = URLSession.shared
         var request = URLRequest(url: webhookURL)
