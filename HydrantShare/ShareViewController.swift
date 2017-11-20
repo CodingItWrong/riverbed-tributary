@@ -41,8 +41,24 @@ class ShareViewController: SLComposeServiceViewController {
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         
-        let task = session.dataTask(with: request) { _, _, _ in
-            completion();
+        let task = session.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                self.alert(message: error!.localizedDescription, completion: completion)
+                return
+            }
+            
+            guard let response = response,
+                  let httpResponse = response as? HTTPURLResponse else {
+                self.alert(message: "Unexpected response type received", completion: completion)
+                return
+            }
+            
+            guard httpResponse.statusCode == 201 else {
+                self.alert(message: "Unexpected response: \(httpResponse.statusCode)", completion: completion)
+                return
+            }
+            
+            self.alert(message: "Saved to Firehose.", completion: completion)
         }
         task.resume()
     }
@@ -56,17 +72,17 @@ class ShareViewController: SLComposeServiceViewController {
         self.present(alert, animated: true)
     }
     
+    private func done() {
+        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+    }
+    
     override func didSelectPost() {
         getURLAttachment() { sharedURL in
             let bodyDict = [
                 "url": sharedURL.absoluteString,
                 "title": self.contentText,
                 ]
-            self.postWebhook(bodyDict: bodyDict) {
-                self.alert(message: "Saved to Firehose.") {
-                    self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-                }
-            }
+            self.postWebhook(bodyDict: bodyDict, completion: self.done)
         }
     }
 
