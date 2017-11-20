@@ -13,6 +13,9 @@
 		034030331FC32E7A005B3C5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034030321FC32E7A005B3C5A /* Assets.xcassets */; };
 		034030361FC32E7A005B3C5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034030341FC32E7A005B3C5A /* LaunchScreen.storyboard */; };
 		034030411FC32E7A005B3C5A /* HydrantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034030401FC32E7A005B3C5A /* HydrantTests.swift */; };
+		034030521FC32F84005B3C5A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034030511FC32F84005B3C5A /* ShareViewController.swift */; };
+		034030551FC32F84005B3C5A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034030531FC32F84005B3C5A /* MainInterface.storyboard */; };
+		034030591FC32F84005B3C5A /* HydrantShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0340304F1FC32F84005B3C5A /* HydrantShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +26,28 @@
 			remoteGlobalIDString = 034030271FC32E7A005B3C5A;
 			remoteInfo = Hydrant;
 		};
+		034030571FC32F84005B3C5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034030201FC32E7A005B3C5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0340304E1FC32F84005B3C5A;
+			remoteInfo = HydrantShare;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0340305D1FC32F84005B3C5A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				034030591FC32F84005B3C5A /* HydrantShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		034030281FC32E7A005B3C5A /* Hydrant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +60,10 @@
 		0340303C1FC32E7A005B3C5A /* HydrantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HydrantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		034030401FC32E7A005B3C5A /* HydrantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrantTests.swift; sourceTree = "<group>"; };
 		034030421FC32E7A005B3C5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0340304F1FC32F84005B3C5A /* HydrantShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HydrantShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		034030511FC32F84005B3C5A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		034030541FC32F84005B3C5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		034030561FC32F84005B3C5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0340304C1FC32F84005B3C5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +96,7 @@
 			children = (
 				0340302A1FC32E7A005B3C5A /* Hydrant */,
 				0340303F1FC32E7A005B3C5A /* HydrantTests */,
+				034030501FC32F84005B3C5A /* HydrantShare */,
 				034030291FC32E7A005B3C5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +106,7 @@
 			children = (
 				034030281FC32E7A005B3C5A /* Hydrant.app */,
 				0340303C1FC32E7A005B3C5A /* HydrantTests.xctest */,
+				0340304F1FC32F84005B3C5A /* HydrantShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +133,16 @@
 			path = HydrantTests;
 			sourceTree = "<group>";
 		};
+		034030501FC32F84005B3C5A /* HydrantShare */ = {
+			isa = PBXGroup;
+			children = (
+				034030511FC32F84005B3C5A /* ShareViewController.swift */,
+				034030531FC32F84005B3C5A /* MainInterface.storyboard */,
+				034030561FC32F84005B3C5A /* Info.plist */,
+			);
+			path = HydrantShare;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,10 +153,12 @@
 				034030241FC32E7A005B3C5A /* Sources */,
 				034030251FC32E7A005B3C5A /* Frameworks */,
 				034030261FC32E7A005B3C5A /* Resources */,
+				0340305D1FC32F84005B3C5A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				034030581FC32F84005B3C5A /* PBXTargetDependency */,
 			);
 			name = Hydrant;
 			productName = Hydrant;
@@ -134,6 +183,23 @@
 			productReference = 0340303C1FC32E7A005B3C5A /* HydrantTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0340304E1FC32F84005B3C5A /* HydrantShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0340305A1FC32F84005B3C5A /* Build configuration list for PBXNativeTarget "HydrantShare" */;
+			buildPhases = (
+				0340304B1FC32F84005B3C5A /* Sources */,
+				0340304C1FC32F84005B3C5A /* Frameworks */,
+				0340304D1FC32F84005B3C5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HydrantShare;
+			productName = HydrantShare;
+			productReference = 0340304F1FC32F84005B3C5A /* HydrantShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -153,6 +219,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 034030271FC32E7A005B3C5A;
 					};
+					0340304E1FC32F84005B3C5A = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 034030231FC32E7A005B3C5A /* Build configuration list for PBXProject "Hydrant" */;
@@ -170,6 +240,7 @@
 			targets = (
 				034030271FC32E7A005B3C5A /* Hydrant */,
 				0340303B1FC32E7A005B3C5A /* HydrantTests */,
+				0340304E1FC32F84005B3C5A /* HydrantShare */,
 			);
 		};
 /* End PBXProject section */
@@ -189,6 +260,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0340304D1FC32F84005B3C5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034030551FC32F84005B3C5A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +291,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0340304B1FC32F84005B3C5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034030521FC32F84005B3C5A /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -219,6 +306,11 @@
 			isa = PBXTargetDependency;
 			target = 034030271FC32E7A005B3C5A /* Hydrant */;
 			targetProxy = 0340303D1FC32E7A005B3C5A /* PBXContainerItemProxy */;
+		};
+		034030581FC32F84005B3C5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0340304E1FC32F84005B3C5A /* HydrantShare */;
+			targetProxy = 034030571FC32F84005B3C5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -237,6 +329,14 @@
 				034030351FC32E7A005B3C5A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		034030531FC32F84005B3C5A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				034030541FC32F84005B3C5A /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -352,6 +452,7 @@
 		034030461FC32E7A005B3C5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6283CFQE2Y;
@@ -367,6 +468,7 @@
 		034030471FC32E7A005B3C5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6283CFQE2Y;
@@ -413,6 +515,36 @@
 			};
 			name = Release;
 		};
+		0340305B1FC32F84005B3C5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6283CFQE2Y;
+				INFOPLIST_FILE = HydrantShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant.HydrantShare";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0340305C1FC32F84005B3C5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6283CFQE2Y;
+				INFOPLIST_FILE = HydrantShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant.HydrantShare";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -439,6 +571,15 @@
 			buildConfigurations = (
 				034030491FC32E7A005B3C5A /* Debug */,
 				0340304A1FC32E7A005B3C5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0340305A1FC32F84005B3C5A /* Build configuration list for PBXNativeTarget "HydrantShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0340305B1FC32F84005B3C5A /* Debug */,
+				0340305C1FC32F84005B3C5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
