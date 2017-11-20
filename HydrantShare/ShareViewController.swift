@@ -47,10 +47,10 @@ class ShareViewController: SLComposeServiceViewController {
         task.resume()
     }
     
-    private func alert(message: String, completionHandler: (() -> Void)?) {
+    private func alert(message: String, completion: (() -> Void)?) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            completionHandler?();
+            completion?();
         }
         alert.addAction(okAction)
         self.present(alert, animated: true)
