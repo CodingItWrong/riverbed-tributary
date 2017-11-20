@@ -28,7 +28,10 @@ class ShareViewController: SLComposeServiceViewController {
                 let webhookURL = URL(string: webhookURLString)!
                 let session = URLSession.shared
                 var request = URLRequest(url: webhookURL)
-                let bodyDict = ["url": sharedURL.absoluteString]
+                let bodyDict = [
+                    "url": sharedURL.absoluteString,
+                    "message": self.contentText,
+                ]
                 let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "POST";
