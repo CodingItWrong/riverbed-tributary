@@ -31,7 +31,7 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
 
-    private func postWebhook(bodyDict: [String: String?]) {
+    private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
         let webhookURLString = "http://localhost:3000/webhooks/hydrant"
         let webhookURL = URL(string: webhookURLString)!
         let session = URLSession.shared
@@ -41,6 +41,9 @@ class ShareViewController: SLComposeServiceViewController {
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         
+        let task = session.dataTask(with: request) { _, _, _ in
+            completion();
+        }
         task.resume()
     }
     
@@ -50,10 +53,14 @@ class ShareViewController: SLComposeServiceViewController {
                 "url": sharedURL.absoluteString,
                 "title": self.contentText,
                 ]
-            self.postWebhook(bodyDict: bodyDict)
-            
-            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-
+            self.postWebhook(bodyDict: bodyDict) {
+                let alert = UIAlertController(title: "Saved to Firehose.", message: nil, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            }
         }
     }
 
@@ -63,3 +70,4 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
 }
+
