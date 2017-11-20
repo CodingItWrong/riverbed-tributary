@@ -24,6 +24,7 @@ class ShareViewController: SLComposeServiceViewController {
         var request = URLRequest(url: url)
         let bodyDict = ["message": "hello, world!"]
         let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST";
         request.httpBody = bodyData;
 
