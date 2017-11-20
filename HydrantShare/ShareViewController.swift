@@ -31,27 +31,29 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
 
+    private func postWebhook(bodyDict: [String: String?]) {
+        let webhookURLString = "http://localhost:3000/webhooks/hydrant"
+        let webhookURL = URL(string: webhookURLString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: webhookURL)
+        let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST";
+        request.httpBody = bodyData;
+        
+        task.resume()
+    }
+    
     override func didSelectPost() {
         getURLAttachment() { sharedURL in
-            // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-            let webhookURLString = "http://localhost:3000/webhooks/hydrant"
-            let webhookURL = URL(string: webhookURLString)!
-            let session = URLSession.shared
-            var request = URLRequest(url: webhookURL)
             let bodyDict = [
                 "url": sharedURL.absoluteString,
-                "message": self.contentText,
+                "title": self.contentText,
                 ]
-            let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST";
-            request.httpBody = bodyData;
+            self.postWebhook(bodyDict: bodyDict)
             
-            let task = session.dataTask(with: request)
-            task.resume()
-            
-            // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+
         }
     }
 
