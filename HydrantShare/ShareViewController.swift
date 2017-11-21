@@ -12,6 +12,8 @@ import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
 
+    private let apiToken = "4a8d46d32b46d6f736cf22021e115e56e93eaed56c0b0d8f0a67b4d9d9ceb14b75860f079e9c5e1fa1d17be23226fdf729817108b129b480d37a49b87631b41d"
+    
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
@@ -58,6 +60,7 @@ class ShareViewController: SLComposeServiceViewController {
         var request = URLRequest(url: webhookURL)
         let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         
