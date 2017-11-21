@@ -22,7 +22,7 @@ enum ShareError: LocalizedError {
 
 class ShareViewController: SLComposeServiceViewController {
 
-    private let apiToken = "4a8d46d32b46d6f736cf22021e115e56e93eaed56c0b0d8f0a67b4d9d9ceb14b75860f079e9c5e1fa1d17be23226fdf729817108b129b480d37a49b87631b41d"
+    private let apiKey = Secrets.apiKey
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -63,13 +63,14 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
-        let webhookURLString = "https://links.codingitwrong.com/webhooks/hydrant"
+//        let webhookURLString = "https://links.codingitwrong.com/webhooks/hydrant"
+        let webhookURLString = "http://10.0.1.5:3000/webhooks/hydrant"
         let webhookURL = URL(string: webhookURLString)!
         let session = URLSession.shared
         var request = URLRequest(url: webhookURL)
         let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         
