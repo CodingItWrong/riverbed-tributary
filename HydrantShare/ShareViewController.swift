@@ -10,6 +10,16 @@ import UIKit
 import Social
 import MobileCoreServices
 
+enum ShareError: LocalizedError {
+    case urlNotFound
+    
+    var errorDescription: String? {
+        switch self {
+        case .urlNotFound: return "URL not found"
+        }
+    }
+}
+
 class ShareViewController: SLComposeServiceViewController {
 
     private let apiToken = "4a8d46d32b46d6f736cf22021e115e56e93eaed56c0b0d8f0a67b4d9d9ceb14b75860f079e9c5e1fa1d17be23226fdf729817108b129b480d37a49b87631b41d"
@@ -19,7 +29,7 @@ class ShareViewController: SLComposeServiceViewController {
         return true
     }
     
-    private func getURLAttachment(completion: @escaping (URL) -> Void) {
+    private func getURLAttachment(completion: @escaping (Result<URL>) -> Void) {
         let item: NSExtensionItem = extensionContext!.inputItems[0] as! NSExtensionItem
         let attachment = item.attachments![0] as! NSItemProvider
         let urlType = kUTTypeURL as String
@@ -29,10 +39,9 @@ class ShareViewController: SLComposeServiceViewController {
                 switch data {
                 case let url as URL:
                     // todo: figure out how to pass IUO error
-                    completion(url)
+                    completion(.success(url))
                 default:
-                    // TODO: call completion to finish the share event
-                    NSLog("no url found")
+                    completion(.failure(ShareError.urlNotFound))
                 }
             }
         } else if attachment.hasItemConformingToTypeIdentifier(plainTextType) {
@@ -40,16 +49,16 @@ class ShareViewController: SLComposeServiceViewController {
                 switch data {
                 case let urlString as String:
                     if let url = URL(string: urlString) {
-                        completion(url)
+                        completion(.success(url))
                     } else {
-                        // TODO: call completion to finish the share event
-                        NSLog("String was not a URL")
+                        completion(.failure(ShareError.urlNotFound))
                     }
                 default:
-                    // TODO: call completion to finish the share event
-                    NSLog("no url found")
+                    completion(.failure(ShareError.urlNotFound))
                 }
             }
+        } else {
+            completion(.failure(ShareError.urlNotFound))
         }
     }
 
@@ -100,12 +109,17 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     override func didSelectPost() {
-        getURLAttachment() { sharedURL in
-            let bodyDict = [
-                "url": sharedURL.absoluteString,
-                "title": self.contentText,
-                ]
-            self.postWebhook(bodyDict: bodyDict, completion: self.done)
+        getURLAttachment() { result in
+            switch result {
+            case .success(let sharedURL):
+                let bodyDict = [
+                    "url": sharedURL.absoluteString,
+                    "title": self.contentText,
+                    ]
+                self.postWebhook(bodyDict: bodyDict, completion: self.done)
+            case .failure(let error):
+                self.alert(message: "An error occurred: \(error.localizedDescription)", completion: self.done)
+            }
         }
     }
 
