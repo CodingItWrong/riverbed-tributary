@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		032B7B4D1FC4318500A6D923 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B7B4C1FC4318500A6D923 /* Result.swift */; };
+		032B7B511FC4577D00A6D923 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B7B501FC4577D00A6D923 /* Secrets.swift */; };
 		0340302C1FC32E7A005B3C5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340302B1FC32E7A005B3C5A /* AppDelegate.swift */; };
 		0340302E1FC32E7A005B3C5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340302D1FC32E7A005B3C5A /* ViewController.swift */; };
 		034030311FC32E7A005B3C5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0340302F1FC32E7A005B3C5A /* Main.storyboard */; };
@@ -52,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		032B7B4C1FC4318500A6D923 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		032B7B4E1FC4575300A6D923 /* Secrets.sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.sample.swift; sourceTree = "<group>"; };
+		032B7B501FC4577D00A6D923 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		034030281FC32E7A005B3C5A /* Hydrant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0340302B1FC32E7A005B3C5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0340302D1FC32E7A005B3C5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				034030531FC32F84005B3C5A /* MainInterface.storyboard */,
 				034030561FC32F84005B3C5A /* Info.plist */,
 				032B7B4C1FC4318500A6D923 /* Result.swift */,
+				032B7B4E1FC4575300A6D923 /* Secrets.sample.swift */,
+				032B7B501FC4577D00A6D923 /* Secrets.swift */,
 			);
 			path = HydrantShare;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				032B7B4D1FC4318500A6D923 /* Result.swift in Sources */,
+				032B7B511FC4577D00A6D923 /* Secrets.swift in Sources */,
 				034030521FC32F84005B3C5A /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
