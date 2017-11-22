@@ -1,5 +1,5 @@
 //
-//  Secrets.sample.swift
+//  Config.sample.swift
 //  HydrantShare
 //
 //  Created by Josh Justice on 11/21/17.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum Secrets {
+enum Config {
     static let apiKey = "fake_api_key"
 }

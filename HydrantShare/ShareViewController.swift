@@ -22,7 +22,7 @@ enum ShareError: LocalizedError {
 
 class ShareViewController: SLComposeServiceViewController {
 
-    private let apiKey = Secrets.apiKey
+    private let apiKey = Config.apiKey
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
