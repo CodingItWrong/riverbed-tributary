@@ -18,6 +18,7 @@
 		034030521FC32F84005B3C5A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034030511FC32F84005B3C5A /* ShareViewController.swift */; };
 		034030551FC32F84005B3C5A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034030531FC32F84005B3C5A /* MainInterface.storyboard */; };
 		034030591FC32F84005B3C5A /* HydrantShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0340304F1FC32F84005B3C5A /* HydrantShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		03A2D5AB1FC6F52500D11EAF /* AttachmentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2D5AA1FC6F52500D11EAF /* AttachmentHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		034030511FC32F84005B3C5A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		034030541FC32F84005B3C5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		034030561FC32F84005B3C5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03A2D5AA1FC6F52500D11EAF /* AttachmentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				032B7B4C1FC4318500A6D923 /* Result.swift */,
 				032B7B4E1FC4575300A6D923 /* Config.sample.swift */,
 				032B7B501FC4577D00A6D923 /* Config.swift */,
+				03A2D5AA1FC6F52500D11EAF /* AttachmentHandler.swift */,
 			);
 			path = HydrantShare;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				032B7B4D1FC4318500A6D923 /* Result.swift in Sources */,
+				03A2D5AB1FC6F52500D11EAF /* AttachmentHandler.swift in Sources */,
 				032B7B511FC4577D00A6D923 /* Config.swift in Sources */,
 				034030521FC32F84005B3C5A /* ShareViewController.swift in Sources */,
 			);

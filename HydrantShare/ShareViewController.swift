@@ -8,7 +8,6 @@
 
 import UIKit
 import Social
-import MobileCoreServices
 
 enum ShareError: LocalizedError {
     case urlNotFound
@@ -25,6 +24,8 @@ class ShareViewController: SLComposeServiceViewController {
     private let webhookURL = Config.webhookURL
     private let apiKey = Config.apiKey
     
+    private let attachmentHandler = AttachmentHandler()
+    
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
@@ -35,61 +36,9 @@ class ShareViewController: SLComposeServiceViewController {
         let attachments = item.attachments!.map({untypedAttachment in
             return untypedAttachment as! NSItemProvider
         })
-        getURLAttachment(attachments: attachments, completion: completion)
+        attachmentHandler.getURL(attachments: attachments, completion: completion)
     }
     
-    private func getURLAttachment(attachments: [NSItemProvider], completion: @escaping (Result<URL>) -> Void)
-    {
-        // log all attachment types
-        for attachment in attachments {
-            NSLog("Attachment of type \(attachment.registeredTypeIdentifiers.joined(separator: ", "))")
-        }
-        
-        // first, look for URL
-        let urlType = kUTTypeURL as String
-        for attachment in attachments {
-            if attachment.hasItemConformingToTypeIdentifier(urlType) {
-                attachment.loadItem(forTypeIdentifier: urlType) { (data, error) in
-                    switch data {
-                    case let url as URL:
-                        // todo: figure out how to pass IUO error
-                        NSLog("Found attached URL \(url.absoluteString)")
-                        completion(.success(url))
-                    default:
-                        NSLog("Attachment said it was a URL, but did not return one")
-                        completion(.failure(ShareError.urlNotFound))
-                    }
-                }
-                return
-            }
-        }
-
-        // if no URL found, look for text
-        let plainTextType = kUTTypePlainText as String
-        for attachment in attachments {
-            if attachment.hasItemConformingToTypeIdentifier(plainTextType) {
-                attachment.loadItem(forTypeIdentifier: plainTextType) { (data, error) in
-                    switch data {
-                    case let urlString as String:
-                        NSLog("Found attached string \(urlString)")
-                        if let url = URL(string: urlString) {
-                            completion(.success(url))
-                        } else {
-                            NSLog("There was a text attachment, but it was not a valid URL")
-                        }
-                    default:
-                        NSLog("Attachment said it was plain text, but did not return a String")
-                    }
-                }
-                return
-            }
-        }
-        
-        // if no URL or text found, fail
-        NSLog("No URL or plain text attachments found")
-        completion(.failure(ShareError.urlNotFound))
-    }
-
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: webhookURL)
