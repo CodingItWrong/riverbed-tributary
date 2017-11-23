@@ -35,7 +35,11 @@ class ShareViewController: SLComposeServiceViewController {
         let attachments = item.attachments!.map({untypedAttachment in
             return untypedAttachment as! NSItemProvider
         })
-        
+        getURLAttachment(attachments: attachments, completion: completion)
+    }
+    
+    private func getURLAttachment(attachments: [NSItemProvider], completion: @escaping (Result<URL>) -> Void)
+    {
         // log all attachment types
         for attachment in attachments {
             NSLog("Attachment of type \(attachment.registeredTypeIdentifiers.joined(separator: ", "))")
