@@ -22,6 +22,7 @@ enum ShareError: LocalizedError {
 
 class ShareViewController: SLComposeServiceViewController {
 
+    private let webhookURL = Config.webhookURL
     private let apiKey = Config.apiKey
     
     override func isContentValid() -> Bool {
@@ -63,9 +64,6 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
-        let webhookURLString = "https://links.codingitwrong.com/webhooks/hydrant"
-//        let webhookURLString = "http://10.0.1.5:3000/webhooks/hydrant"
-        let webhookURL = URL(string: webhookURLString)!
         let session = URLSession.shared
         var request = URLRequest(url: webhookURL)
         let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])

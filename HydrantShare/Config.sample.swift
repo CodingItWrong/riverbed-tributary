@@ -9,5 +9,6 @@
 import Foundation
 
 enum Config {
+    static let webhookURL = URL(string: "https://example.com/webhook")
     static let apiKey = "fake_api_key"
 }
