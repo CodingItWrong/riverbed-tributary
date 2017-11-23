@@ -10,7 +10,7 @@ import Foundation
 import MobileCoreServices
 
 struct AttachmentHandler {
-    func getURL(attachments: [NSItemProvider], completion: @escaping (Result<URL>) -> Void)
+    func getURL(attachments: [Attachment], completion: @escaping (Result<URL>) -> Void)
     {
         // log all attachment types
         for attachment in attachments {
