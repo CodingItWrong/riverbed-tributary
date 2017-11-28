@@ -32,25 +32,36 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func getURLAttachment(completion: @escaping (Result<URL>) -> Void) {
-        let item: NSExtensionItem = extensionContext!.inputItems[0] as! NSExtensionItem
-        let attachments = item.attachments!.map({untypedAttachment in
-            return untypedAttachment as! NSItemProvider
-        })
+        guard let context = extensionContext,
+            let items = context.inputItems as? [NSExtensionItem],
+            let item = items.first,
+            let attachments = item.attachments as? [NSItemProvider] else
+        {
+                completion(.failure(ShareError.urlNotFound))
+                return
+        }
+
         attachmentHandler.getURL(attachments: attachments, completion: completion)
     }
     
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: webhookURL)
-        let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        var bodyData: Data
+        do {
+            bodyData = try JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        } catch {
+            self.alert(message: "A service error occurred", completion: completion)
+            return
+        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         
         let task = session.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                self.alert(message: error!.localizedDescription, completion: completion)
+            if let error = error {
+                self.alert(message: error.localizedDescription, completion: completion)
                 return
             }
             
@@ -80,7 +91,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func done() {
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        self.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
     }
     
     override func didSelectPost() {
