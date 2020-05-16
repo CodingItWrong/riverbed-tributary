@@ -226,6 +226,7 @@
 				TargetAttributes = {
 					034030271FC32E7A005B3C5A = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 					0340303B1FC32E7A005B3C5A = {
@@ -235,6 +236,7 @@
 					};
 					0340304E1FC32F84005B3C5A = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -482,7 +484,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -498,7 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -547,7 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant.HydrantShare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -562,7 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.need-bee.Hydrant.HydrantShare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

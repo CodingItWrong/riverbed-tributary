@@ -35,7 +35,7 @@ class ShareViewController: SLComposeServiceViewController {
         guard let context = extensionContext,
             let items = context.inputItems as? [NSExtensionItem],
             let item = items.first,
-            let attachments = item.attachments as? [NSItemProvider] else
+            let attachments = item.attachments else
         {
                 completion(.failure(ShareError.urlNotFound))
                 return
@@ -82,12 +82,14 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func alert(message: String, completion: (() -> Void)?) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            completion?();
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                completion?();
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
         }
-        alert.addAction(okAction)
-        self.present(alert, animated: true)
     }
     
     private func done() {
