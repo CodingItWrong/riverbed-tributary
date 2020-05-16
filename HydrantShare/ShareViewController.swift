@@ -35,7 +35,7 @@ class ShareViewController: SLComposeServiceViewController {
         guard let context = extensionContext,
             let items = context.inputItems as? [NSExtensionItem],
             let item = items.first,
-            let attachments = item.attachments as? [NSItemProvider] else
+            let attachments = item.attachments else
         {
                 completion(.failure(ShareError.urlNotFound))
                 return
