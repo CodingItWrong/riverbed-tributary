@@ -82,12 +82,14 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func alert(message: String, completion: (() -> Void)?) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            completion?();
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                completion?();
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
         }
-        alert.addAction(okAction)
-        self.present(alert, animated: true)
     }
     
     private func done() {
