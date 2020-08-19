@@ -45,7 +45,10 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func postWebhook(bodyDict: [String: String?], completion: @escaping () -> Void) {
-        let session = URLSession.shared
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 5.0 // seconds
+        let session = URLSession(configuration: sessionConfig)
+        
         var request = URLRequest(url: webhookURL)
         var bodyData: Data
         do {
