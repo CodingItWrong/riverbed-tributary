@@ -52,6 +52,8 @@ struct AttachmentHandler {
                     default:
                         NSLog("Attachment said it was plain text, but did not return a String")
                     }
+                    NSLog("No URL or plain text attachments found")
+                    completion(.failure(ShareError.urlNotFound))
                 }
                 return
             }
