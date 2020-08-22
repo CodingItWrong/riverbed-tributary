@@ -52,9 +52,11 @@ struct AttachmentHandler {
                             return
                         } else {
                             NSLog("There was a text attachment, but it was not a valid URL")
+                            // fall through
                         }
                     default:
                         NSLog("Attachment said it was plain text, but did not return a String")
+                        // fall through
                     }
                     NSLog("No URL or plain text attachments found")
                     completion(.failure(ShareError.urlNotFound))
