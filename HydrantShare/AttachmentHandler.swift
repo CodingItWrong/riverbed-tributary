@@ -46,6 +46,7 @@ struct AttachmentHandler {
                         NSLog("Found attached string \(urlString)")
                         if let url = URL(string: urlString) {
                             completion(.success(url))
+                            return
                         } else if let url = try? self.getURL(fromString: urlString) {
                             completion(.success(url))
                             return
