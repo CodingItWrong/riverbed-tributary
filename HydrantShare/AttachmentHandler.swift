@@ -46,6 +46,9 @@ struct AttachmentHandler {
                         NSLog("Found attached string \(urlString)")
                         if let url = URL(string: urlString) {
                             completion(.success(url))
+                        } else if let url = try? self.getURL(fromString: urlString) {
+                            completion(.success(url))
+                            return
                         } else {
                             NSLog("There was a text attachment, but it was not a valid URL")
                         }
@@ -62,5 +65,18 @@ struct AttachmentHandler {
         // if no URL or text found, fail
         NSLog("No URL or plain text attachments found")
         completion(.failure(ShareError.urlNotFound))
+    }
+    
+    // see https://learnappmaking.com/regular-expressions-swift-string/
+    func getURL(fromString string:String) throws -> URL? {
+        let urlRegexString = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+        let regex = try NSRegularExpression(pattern: urlRegexString)
+        let nsString = string as NSString
+        let matches = regex.matches(in: string, options: [], range: NSRange(location: 0, length: nsString.length)).map { nsString.substring(with: $0.range) }
+        if matches.count > 0 {
+            return URL(string: matches[0])
+        } else {
+            return nil
+        }
     }
 }
