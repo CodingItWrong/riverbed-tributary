@@ -5,7 +5,7 @@ An iOS share extension to send content to a [Firehose](https://github.com/Coding
 ## Setup
 
 - Clone repo.
-- Duplicate `HydrantShare/Config.sample.swift` as `HydrantShare/config.swift` and fill in the `webhookURL` and `apiKey` values.
+- Duplicate `HydrantShare/Config.sample.swift` as `HydrantShare/Config.swift` and fill in the `webhookURL` and `apiKey` values.
   - `webhookURL` should be the path `/webhooks/hydrant` under your `firehose` installation
   - `apiKey` should be the `API_KEY` environment variable set for the `firehose` installation.
 - Build the app to a device.
