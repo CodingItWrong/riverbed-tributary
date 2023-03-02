@@ -1,6 +1,6 @@
 # Hydrant
 
-An iOS share extension to send content to a [Firehose](https://github.com/CodingItWrong/firehose) installation.
+An iOS share extension to send content to a web service. Currently configured as a custom integration with List App.
 
 ## Setup
 
