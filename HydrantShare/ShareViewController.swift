@@ -74,7 +74,7 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             
-            guard httpResponse.statusCode == 202 else {
+            guard httpResponse.statusCode == 204 else {
                 self.alert(message: "Unexpected response: \(httpResponse.statusCode)", completion: completion)
                 return
             }
