@@ -79,7 +79,7 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             
-            self.alert(message: "Saved to Firehose.", completion: completion)
+            self.alert(message: "Link saved.", completion: completion)
         }
         task.resume()
     }
