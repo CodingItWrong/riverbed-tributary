@@ -55,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		032B7B4C1FC4318500A6D923 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		032B7B4E1FC4575300A6D923 /* Config.sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.sample.swift; sourceTree = "<group>"; };
 		032B7B501FC4577D00A6D923 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		034030281FC32E7A005B3C5A /* Hydrant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0340302B1FC32E7A005B3C5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +148,6 @@
 				034030531FC32F84005B3C5A /* MainInterface.storyboard */,
 				034030561FC32F84005B3C5A /* Info.plist */,
 				032B7B4C1FC4318500A6D923 /* Result.swift */,
-				032B7B4E1FC4575300A6D923 /* Config.sample.swift */,
 				032B7B501FC4577D00A6D923 /* Config.swift */,
 				03A2D5AA1FC6F52500D11EAF /* AttachmentHandler.swift */,
 				03A2D5AC1FC6F5AA00D11EAF /* Attachment.swift */,
