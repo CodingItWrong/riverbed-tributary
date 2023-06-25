@@ -22,7 +22,7 @@ enum ShareError: LocalizedError {
 class ShareViewController: SLComposeServiceViewController {
 
     private let webhookURL = Config.webhookURL
-    private let apiKey = Config.apiKey
+    private let accessToken = Config.accessToken
     
     private let attachmentHandler = AttachmentHandler()
     
@@ -58,7 +58,7 @@ class ShareViewController: SLComposeServiceViewController {
             return
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST";
         request.httpBody = bodyData;
         

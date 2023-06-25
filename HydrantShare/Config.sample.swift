@@ -9,6 +9,6 @@
 import Foundation
 
 enum Config {
-    static let webhookURL = URL(string: "https://example.com/webhook")!
-    static let apiKey = "fake_api_key"
+    static let webhookURL = URL(string: "https://api.riverbed.app/shares")!
+    static let accessToken = "fake_access_token"
 }
